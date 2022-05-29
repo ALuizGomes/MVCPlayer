@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj": {}
+    "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj": {
+    "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj",
+        "projectUniqueName": "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj",
         "projectName": "MVCPlayer",
-        "projectPath": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\obj\\",
+        "projectPath": "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj",
+        "packagesPath": "/home/andre/.nuget/packages/",
+        "outputPath": "/home/andre/Documents/GitHub/MVCPlayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/andre/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -37,6 +37,22 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SQLite": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
