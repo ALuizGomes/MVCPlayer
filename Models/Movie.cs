@@ -21,6 +21,7 @@ namespace MVCPlayer.Models
     {
         public int Id { get; set;}
 
-        public Nome
+        public string? Nome { get; set; }
     }
+    
 }

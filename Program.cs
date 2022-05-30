@@ -1,17 +1,40 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+using MySql.Web;
+using MySql.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
+
+using System;
+using System.Windows.Input;
+
+MySql.Data.MySqlClient.MySqlConnection conn;
+string myConnectionString;
+
+myConnectionString = "server=localhost;uid=root;" + "pwd=3004";
+
+try
+{
+    conn = new MySql.Data.MySqlClient.MySqlConnection();
+    conn.ConnectionString = myConnectionString;
+    conn.Open();
+}
+catch (MySql.Data.MySqlClient.MySqlException ex)
+{
+    MessageBox(ex.Message);
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 if(builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("MVCPlayerContext")));
+        options.UseMySQL(builder.Configuration.GetConnectionString("MVCPlayerContext")));
 }
 else
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("ProductionMvcMovieContext")));
+        options.UseMySQL(builder.Configuration.GetConnectionString("ProductionMvcMovieContext")));
 }
 
 // Add services to the container.
