@@ -16,4 +16,11 @@ namespace MVCPlayer.Models
 
         public decimal Price { get; set; }
     }
+
+    public class Studio
+    {
+        public int Id { get; set;}
+
+        public Nome
+    }
 }
