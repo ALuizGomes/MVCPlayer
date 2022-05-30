@@ -10,7 +10,7 @@ namespace MVCPlayer.Controllers
             return View();
         }
 
-        public IActionResult Welcome(string name = "Andre", int numTimes = 4)
+        public IActionResult Welcome(string name = "André", int numTimes = 4)
         {
             ViewData["Message"] = "Hello " + name;
             ViewData["NumTimes"] = numTimes;

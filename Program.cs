@@ -8,33 +8,33 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Input;
 
-MySql.Data.MySqlClient.MySqlConnection conn;
+// MySql.Data.MySqlClient.MySqlConnection conn;
 string myConnectionString;
 
-myConnectionString = "server=localhost;uid=root;" + "pwd=3004";
+myConnectionString = "server=localhost;uid=root;" + "pwd=3004; database=test";
 
-try
-{
-    conn = new MySql.Data.MySqlClient.MySqlConnection();
-    conn.ConnectionString = myConnectionString;
-    conn.Open();
-}
-catch (MySql.Data.MySqlClient.MySqlException ex)
-{
-    MessageBox(ex.Message);
-}
+//try
+//{
+//    conn = new MySql.Data.MySqlClient.MySqlConnection();
+//    conn.ConnectionString = myConnectionString;
+//    conn.Open();
+//}
+//catch (MySql.Data.MySqlClient.MySqlException ex)
+//{
+//    MessageBox.Show(ex.Message);
+//}
 
 var builder = WebApplication.CreateBuilder(args);
 
 if(builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseMySQL(builder.Configuration.GetConnectionString("MVCPlayerContext")));
+        options.UseMySQL(builder.Configuration.GetConnectionString(myConnectionString)));
 }
 else
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseMySQL(builder.Configuration.GetConnectionString("ProductionMvcMovieContext")));
+        options.UseMySQL(builder.Configuration.GetConnectionString(myConnectionString)));
 }
 
 // Add services to the container.
