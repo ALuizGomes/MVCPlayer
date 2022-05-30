@@ -15,13 +15,8 @@ namespace MVCPlayer.Models
         public string? Genre { get; set; }
 
         public decimal Price { get; set; }
-    }
 
-    public class Studio
-    {
-        public int Id { get; set;}
-
-        public string? Nome { get; set; }
+        public virtual Studio? Studio { get; set; }
     }
-    
+ 
 }

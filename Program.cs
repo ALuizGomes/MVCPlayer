@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-using MySql.EntityFrameworkCore;
 
 // MySql.Data.MySqlClient.MySqlConnection conn;
-string myConnectionString ="server=localhost; user=root; password=3004; database=test";
 
 
 
@@ -24,12 +22,14 @@ var builder = WebApplication.CreateBuilder(args);
 if(builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseMySQL(builder.Configuration.GetConnectionString(myConnectionString)));
+        options.UseMySql(builder.Configuration.GetConnectionString("MVCPlayerContext"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MVCPlayerContext"))));
+        // options.UseMySQL(MVCPlayerContext));
 }
 else
 {
     builder.Services.AddDbContext<MVCPlayerContext>(options =>
-        options.UseMySQL(builder.Configuration.GetConnectionString(myConnectionString)));
+        options.UseSqlite(builder.Configuration.GetConnectionString("MVCPlayerContext")));
+        // options.UseMySQL(MVCPlayerContext));
 }
 
 // Add services to the container.
