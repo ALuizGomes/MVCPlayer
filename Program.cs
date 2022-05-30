@@ -1,17 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-using MySql.Web;
 using MySql.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-
-using System;
-using System.Windows.Input;
 
 // MySql.Data.MySqlClient.MySqlConnection conn;
-string myConnectionString;
+string myConnectionString ="server=localhost; user=root; password=3004; database=test";
 
-myConnectionString = "server=localhost;uid=root;" + "pwd=3004; database=test";
+
 
 //try
 //{
