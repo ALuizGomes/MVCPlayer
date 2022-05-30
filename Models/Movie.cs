@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MVCPlayer.Models
 {
-    public class Movvie
+    public class Movie
     {
         public int Id { get; set; }
 
