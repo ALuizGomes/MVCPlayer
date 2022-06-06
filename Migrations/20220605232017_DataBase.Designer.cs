@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCPlayer.Migrations
 {
     [DbContext(typeof(MVCPlayerContext))]
-    [Migration("20220530222834_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220605232017_DataBase")]
+    partial class DataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,48 +29,60 @@ namespace MVCPlayer.Migrations
                     b.Property<string>("Genre")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("StudioId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StudioId");
 
                     b.ToTable("Movie");
                 });
 
             modelBuilder.Entity("MVCPlayer.Models.Studio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("StudioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Studio");
                 });
 
-            modelBuilder.Entity("MVCPlayer.Models.Movie", b =>
-                {
-                    b.HasOne("MVCPlayer.Models.Studio", "Studio")
-                        .WithMany("Name")
-                        .HasForeignKey("StudioId");
-
-                    b.Navigation("Studio");
-                });
-
             modelBuilder.Entity("MVCPlayer.Models.Studio", b =>
                 {
-                    b.Navigation("Name");
+                    b.HasOne("MVCPlayer.Models.Movie", "Movie")
+                        .WithMany("Studio")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("MVCPlayer.Models.Movie", b =>
+                {
+                    b.Navigation("Studio");
                 });
 #pragma warning restore 612, 618
         }

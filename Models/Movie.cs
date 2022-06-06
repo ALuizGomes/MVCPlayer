@@ -5,6 +5,8 @@ namespace MVCPlayer.Models
     public class Movie
     {
         public int Id { get; set; }
+        
+        public int MovieId { get; set; }
 
         public string? Title { get; set; }
 
@@ -16,7 +18,7 @@ namespace MVCPlayer.Models
 
         public decimal Price { get; set; }
 
-        public virtual Studio? Studio { get; set; }
+        public ICollection<Studio>? Studio { get; set; }
     }
  
 }

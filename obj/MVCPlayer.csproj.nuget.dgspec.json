@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj": {}
+    "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj": {}
   },
   "projects": {
-    "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj": {
+    "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj",
         "projectName": "MVCPlayer",
-        "projectPath": "/home/andre/Documents/GitHub/MVCPlayer/MVCPlayer.csproj",
-        "packagesPath": "/home/andre/.nuget/packages/",
-        "outputPath": "/home/andre/Documents/GitHub/MVCPlayer/obj/",
+        "projectPath": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\MVCPlayer.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\andre\\Documents\\aulaMVC\\MVCPlayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/andre/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,10 +53,6 @@
             "Microsoft.EntityFrameworkCore.SQLite": {
               "target": "Package",
               "version": "[6.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -85,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

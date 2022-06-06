@@ -13,4 +13,6 @@ using MVCPlayer.Models;
         }
 
         public DbSet<MVCPlayer.Models.Movie>? Movie { get; set; }
+
+        public DbSet<MVCPlayer.Models.Studio>? Studio { get; set; }
     }

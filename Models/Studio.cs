@@ -2,9 +2,12 @@ namespace MVCPlayer.Models
 {
     public class Studio
     {
-        public int Id { get; set;}
+        public int ID { get; set; }
 
-        public virtual ICollection<Movie>? Name { get; set; }
+        public int StudioId { get; set; }
 
+        public string? Name { get; set; }
+
+        public Movie? Movie { get; set; }
     }
 }
