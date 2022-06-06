@@ -1,7 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// using MVCPlayer.Movies;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVCPlayer.Models;
 
@@ -19,7 +21,8 @@ namespace MVCPlayer.Controllers
         // GET: Studio
         public async Task<IActionResult> Index()
         {
-              return _context.Studio != null ? View(await _context.Studio.Include(i => i.Movie).OrderBy(j => j.Name).ToListAsync()) : Problem("Entity set 'MVCPlayerContext.Studio'  is null.");
+            var mVCPlayerContext = _context.Studio.Include(s => s.Movie);
+            return View(await mVCPlayerContext.ToListAsync());
         }
 
         // GET: Studio/Details/5
@@ -31,6 +34,7 @@ namespace MVCPlayer.Controllers
             }
 
             var studio = await _context.Studio
+                .Include(s => s.Movie)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (studio == null)
             {
@@ -43,17 +47,16 @@ namespace MVCPlayer.Controllers
         // GET: Studio/Create
         public IActionResult Create()
         {
-            var movies = _context.Movie.OrderBy(i => i.Title).ToList();
-            ViewBag.Movies = movies;
+            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Id");
             return View();
         }
 
         // POST: Studio/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("/Studio")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID, MovieId, Title")] Studio studio)
+        public async Task<IActionResult> Create([Bind("ID,StudioId,Name,MovieId")] Studio studio)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace MVCPlayer.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Id", studio.MovieId);
             return View(studio);
         }
 
@@ -77,6 +81,7 @@ namespace MVCPlayer.Controllers
             {
                 return NotFound();
             }
+            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Id", studio.MovieId);
             return View(studio);
         }
 
@@ -85,7 +90,7 @@ namespace MVCPlayer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,StudioId,Name")] Studio studio)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,StudioId,Name,MovieId")] Studio studio)
         {
             if (id != studio.ID)
             {
@@ -112,6 +117,7 @@ namespace MVCPlayer.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Id", studio.MovieId);
             return View(studio);
         }
 
@@ -124,6 +130,7 @@ namespace MVCPlayer.Controllers
             }
 
             var studio = await _context.Studio
+                .Include(s => s.Movie)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (studio == null)
             {

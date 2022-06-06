@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCPlayer.Migrations
 {
     [DbContext(typeof(MVCPlayerContext))]
-    [Migration("20220605232017_DataBase")]
+    [Migration("20220606215306_DataBase")]
     partial class DataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,6 @@ namespace MVCPlayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("StudioId")
