@@ -43,7 +43,7 @@ namespace MVCPlayer.Controllers
         // GET: Studio/Create
         public IActionResult Create()
         {
-            var movies = _context.Movies.OrderBy(i => i.Title).ToList();
+            var movies = _context.Movie.OrderBy(i => i.Title).ToList();
             ViewBag.Movies = movies;
             return View();
         }
@@ -51,7 +51,7 @@ namespace MVCPlayer.Controllers
         // POST: Studio/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("/Studio")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID, MovieId, Title")] Studio studio)
         {
